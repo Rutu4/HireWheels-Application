@@ -70,4 +70,15 @@ public class Vehicle {
     public void setVehicleImageUrl(String vehicleImageUrl) {
         this.vehicleImageUrl = vehicleImageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{vehicleId="+vehicleId
+                +", vehicleModel="+vehicleModel
+                +", vehicleNumber="+vehicleNumber
+                +", color="+color
+                +", availabilityStatus="+availabilityStatus
+                +", vehicleImageUrl="+vehicleImageUrl
+                +"}";
+    }
 }

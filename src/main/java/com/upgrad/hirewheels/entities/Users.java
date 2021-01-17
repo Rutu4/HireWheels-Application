@@ -74,4 +74,16 @@ public class Users {
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
+
+    @Override
+    public String toString() {
+        return "User{userId="+userId
+                +", firstName="+firstName
+                +", lastName="+lastName
+                +", password="+password
+                +", emailId="+emailId
+                +", mobileNumber="+mobileNumber
+                +", walletMoney="+walletMoney
+                +"}";
+    }
 }

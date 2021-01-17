@@ -26,4 +26,11 @@ public class FuelType {
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
     }
+
+    @Override
+    public String toString() {
+        return "FuelType{fuelTypeId="+fuelTypeId
+                +", fuelType"+fuelType
+                +"}";
+    }
 }

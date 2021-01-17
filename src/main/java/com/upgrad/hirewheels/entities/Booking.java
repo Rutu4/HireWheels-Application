@@ -59,4 +59,14 @@ public class Booking {
     public void setAmount(float amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" + "bookingId="+bookingId+
+                ", pickupDate="+pickupDate
+                +", dropoffDate="+dropoffDate
+                +", bookingDate="+bookingDate
+                +", amount="+amount
+                +"}";
+    }
 }

@@ -48,4 +48,13 @@ public class Location {
     public void setPincode(String pincode) {
         this.pincode = pincode;
     }
+
+    @Override
+    public String toString() {
+        return "Location{locationId="+locationId
+                +", locationName="+locationName
+                +", locationAddress="+locationAddress
+                +", pincode="+pincode
+                +"}";
+    }
 }

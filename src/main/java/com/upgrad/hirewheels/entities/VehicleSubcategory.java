@@ -37,4 +37,12 @@ public class VehicleSubcategory {
     public void setPricePerDay(float pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
+
+    @Override
+    public String toString() {
+        return "VehicleSubcategory{vehicleSubcategoryId="+vehicleSubcategoryId
+                +", vehicleSubcategoryName="+vehicleSubcategoryName
+                +", pricePerDay="+pricePerDay
+                +"}";
+    }
 }
