@@ -5,6 +5,7 @@ import javax.persistence.*;
 public class VehicleCategory {
 
     @Id
+    @GeneratedValue
     @Column(name = "vehicle_category_id")
     private  int vehicleCategoryId;
 

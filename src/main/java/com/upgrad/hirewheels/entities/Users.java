@@ -4,7 +4,7 @@ import javax.persistence.*;
 @Entity
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "user_id")
     private int userId;
 
@@ -73,6 +73,14 @@ public class Users {
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
+    }
+
+    public float getWalletMoney() {
+        return walletMoney;
+    }
+
+    public void setWalletMoney(float walletMoney) {
+        this.walletMoney = walletMoney;
     }
 
     @Override

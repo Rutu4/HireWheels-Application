@@ -5,6 +5,7 @@ import javax.persistence.*;
 public class FuelType {
 
     @Id
+    @GeneratedValue
     @Column(name = "fuel_type_id")
     private int fuelTypeId;
 

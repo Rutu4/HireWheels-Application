@@ -5,7 +5,8 @@ import javax.persistence.*;
 public class Location {
 
     @Id
-    @Column
+    @GeneratedValue
+    @Column(name = "location_id")
     private  int locationId;
 
     @Column(name = "location_name", length = 50, nullable = false)

@@ -5,6 +5,7 @@ import  java.time.LocalDate;
 @Entity
 public class Booking {
     @Id
+    @GeneratedValue
     @Column(name = "booking_id")
     private int bookingId;
 

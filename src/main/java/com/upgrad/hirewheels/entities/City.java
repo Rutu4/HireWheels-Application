@@ -5,6 +5,7 @@ import javax.persistence.*;
 public class City {
 
     @Id
+    @GeneratedValue
     @Column(name = "city_id")
     private  int cityId;
 
