@@ -16,6 +16,13 @@ public class HireWheelsApplication {
 		ApplicationContext context = SpringApplication.run(HireWheelsApplication.class, args);
 		UsersDao usersDao = context.getBean(UsersDao.class);
 
+		Role roleA=new Role();
+		roleA.setRoleName("ADMIN");
+		Role roleU=new Role();
+		roleU.setRoleName("USER");
+
+
+
 		Users user1= new Users();
 		user1.setFirstName("Rutu");
 		user1.setLastName("Gaikwad");
@@ -23,6 +30,7 @@ public class HireWheelsApplication {
 		user1.setMobileNumber("9087654321");
 		user1.setPassword("123456");
 		user1.setWalletMoney(10000);
+		user1.setRole(roleA);
 
 		user1=usersDao.save(user1);
 
@@ -33,6 +41,7 @@ public class HireWheelsApplication {
 		user2.setMobileNumber("9087667821");
 		user2.setPassword("444456");
 		user2.setWalletMoney(10000);
+		user2.setRole(roleU);
 
 		user2=usersDao.save(user2);
 
@@ -43,6 +52,7 @@ public class HireWheelsApplication {
 		user3.setMobileNumber("9565469821");
 		user3.setPassword("keku123");
 		user3.setWalletMoney(10000);
+		user3.setRole(roleU);
 
 		user3=usersDao.save(user3);
 
@@ -53,6 +63,7 @@ public class HireWheelsApplication {
 		user4.setMobileNumber("9088888821");
 		user4.setPassword("sujit567");
 		user4.setWalletMoney(10000);
+		user4.setRole(roleU);
 
 		user4=usersDao.save(user4);
 
@@ -63,6 +74,7 @@ public class HireWheelsApplication {
 		user5.setMobileNumber("9088888871");
 		user5.setPassword("chinnu456");
 		user5.setWalletMoney(10000);
+		user5.setRole(roleU);
 
 		user5=usersDao.save(user5);
 
