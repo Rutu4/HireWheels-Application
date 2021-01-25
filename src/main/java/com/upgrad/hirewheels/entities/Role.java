@@ -1,5 +1,6 @@
 package com.upgrad.hirewheels.entities;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Role {
@@ -11,6 +12,17 @@ public class Role {
 
     @Column(name = "role_name", nullable = false, unique = true)
     private String roleName;
+
+    @OneToMany (mappedBy = "role", fetch = FetchType.EAGER, cascade =  {CascadeType.ALL})
+    private Set<Users> users;
+
+    public Set<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<Users> users) {
+        this.users = users;
+    }
 
     public int getRoleId() {
         return roleId;

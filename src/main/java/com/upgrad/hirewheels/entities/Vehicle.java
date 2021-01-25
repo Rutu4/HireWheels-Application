@@ -1,5 +1,6 @@
 package com.upgrad.hirewheels.entities;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Vehicle {
@@ -23,6 +24,29 @@ public class Vehicle {
 
     @Column(name = "vehicle_image_url", length = 500, nullable = false)
     private  String vehicleImageUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "fuel_type_id", nullable = false)
+    private FuelType fuelType;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicle_subcategory_id", nullable = false)
+    private VehicleSubcategory vehicleSubcategory;
+
+    @OneToMany (mappedBy = "vehicle", fetch = FetchType.EAGER, cascade =  {CascadeType.ALL})
+    private Set<Booking> bookings;
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public int getVehicleId() {
         return vehicleId;
@@ -72,6 +96,32 @@ public class Vehicle {
         this.vehicleImageUrl = vehicleImageUrl;
     }
 
+
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public VehicleSubcategory getVehicleSubcategory() {
+        return vehicleSubcategory;
+    }
+
+    public void setVehicleSubcategory(VehicleSubcategory vehicleSubcategory) {
+        this.vehicleSubcategory = vehicleSubcategory;
+    }
+
     @Override
     public String toString() {
         return "Vehicle{vehicleId="+vehicleId
@@ -80,6 +130,10 @@ public class Vehicle {
                 +", color="+color
                 +", availabilityStatus="+availabilityStatus
                 +", vehicleImageUrl="+vehicleImageUrl
+                +", fuelType="+fuelType
+                +", location="+location
+
+                +", vehicleSubcategory="+vehicleSubcategory
                 +"}";
     }
 }
