@@ -4,5 +4,5 @@ import com.upgrad.hirewheels.entities.VehicleCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VehicleCategoryDao extends JpaRepository<VehicleCategory, Integer> {
-    public VehicleCategory  findByVehicleCategoryId(int id);
+     VehicleCategory findById(int id);
 }

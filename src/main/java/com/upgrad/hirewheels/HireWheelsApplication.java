@@ -2,6 +2,7 @@ package com.upgrad.hirewheels;
 
 import com.upgrad.hirewheels.dao.*;
 import com.upgrad.hirewheels.entities.*;
+import com.upgrad.hirewheels.services.initService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,8 +15,8 @@ public class HireWheelsApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext context = SpringApplication.run(HireWheelsApplication.class, args);
-		UsersDao usersDao = context.getBean(UsersDao.class);
-        RoleDao roleDao=context.getBean(RoleDao.class);
+		initService initService= context.getBean(initService.class);
+        initService.start();
 
 
 	}

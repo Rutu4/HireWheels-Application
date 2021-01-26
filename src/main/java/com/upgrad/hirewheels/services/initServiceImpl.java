@@ -33,41 +33,46 @@ public class initServiceImpl implements initService {
         addUserRole();
         addUsers();
         addVehicleCategory();
-        addVehicleSubCategory();
         addCity();
         addFuelType();
         addLocation();
+        addVehicleSubCategory();
     }
 
     private void addCity() {
         City c=new City();
+        c.setCityId(1);
         c.setCityName("Mumbai");
         cityDao.save(c);
     }
 
     private void addLocation() {
         Location location1 = new Location();
+        location1.setCity(cityDao.findById(1));
         location1.setLocationId(1);
         location1.setLocationName("Worli");
         location1.setLocationAddress("Dr E Moses Rd, Worli Naka, Upper Worli");
         location1.setPincode("400018");
-        location1.setCity(cityDao.findById(1).get());
+
+
         locationDao.save(location1);
 
         Location location2 = new Location();
+        location2.setCity(cityDao.findById(1));
         location2.setLocationId(2);
         location2.setLocationName("Chembur");
         location2.setLocationAddress("Optic Complex");
         location2.setPincode("400019");
-        location2.setCity(cityDao.findById(1).get());
+
         locationDao.save(location2);
 
         Location location3 = new Location();
+        location3.setCity(cityDao.findById(1));
         location3.setLocationId(3);
         location3.setLocationName("Powai");
         location3.setLocationAddress("Hiranandani Tower");
         location3.setPincode("400017");
-        location3.setCity(cityDao.findById(1).get());
+
         locationDao.save(location3);
     }
 
@@ -98,41 +103,52 @@ public class initServiceImpl implements initService {
     private void addVehicleSubCategory() {
 
 
-
         VehicleSubcategory vs1=new VehicleSubcategory();
+        vs1.setVehicleCategory(vehicleCategoryDao.findById(10));
+        vs1.setVehicleSubcategoryId(111);
         vs1.setVehicleSubcategoryName("SUV");
         vs1.setPricePerDay(300);
-        vs1.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(10));
+
         vehicleSubCategoryDao.save(vs1);
 
         VehicleSubcategory vs2=new VehicleSubcategory();
+        vs2.setVehicleCategory(vehicleCategoryDao.findById(10));
+        vs2.setVehicleSubcategoryId(112);
         vs2.setVehicleSubcategoryName("SEDAN");
         vs2.setPricePerDay(350);
-        vs2.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(10));
+
         vehicleSubCategoryDao.save(vs2);
 
         VehicleSubcategory vs3=new VehicleSubcategory();
+        vs3.setVehicleCategory(vehicleCategoryDao.findById(10));
+        vs3.setVehicleSubcategoryId(113);
         vs3.setVehicleSubcategoryName("HATCHBACK");
         vs3.setPricePerDay(250);
-        vs3.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(10));
+
         vehicleSubCategoryDao.save(vs3);
 
         VehicleSubcategory vs4=new VehicleSubcategory();
+        vs4.setVehicleCategory(vehicleCategoryDao.findById(11));
+        vs4.setVehicleSubcategoryId(114);
         vs4.setVehicleSubcategoryName("CRUISER");
         vs4.setPricePerDay(200);
-        vs4.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(11));
+
         vehicleSubCategoryDao.save(vs4);
 
         VehicleSubcategory vs5=new VehicleSubcategory();
+        vs5.setVehicleCategory(vehicleCategoryDao.findById(11));
+        vs5.setVehicleSubcategoryId(115);
         vs5.setVehicleSubcategoryName("DIRT BIKE");
         vs5.setPricePerDay(200);
-        vs5.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(11));
+
         vehicleSubCategoryDao.save(vs5);
 
         VehicleSubcategory vs6=new VehicleSubcategory();
+        vs6.setVehicleCategory(vehicleCategoryDao.findById(11));
+        vs6.setVehicleSubcategoryId(116);
         vs6.setVehicleSubcategoryName("SPORTS BIKE");
         vs6.setPricePerDay(150);
-        vs6.setVehicleCategory(vehicleCategoryDao.findByVehicleCategoryId(11));
+
         vehicleSubCategoryDao.save(vs6);
 
     }
