@@ -26,4 +26,17 @@ public class UserServiceImpl implements  UserService{
 
     }
 
+    public Users getUser(String emailId, String password) throws UserAlreadyExitsException{
+        if(usersDao.findByEmailId(emailId).isPresent()){
+            if(usersDao.findByEmailId(emailId).getPassword()==password){
+                return usersDao.findByEmailId(emailId);
+            }else {
+                throw new UserAlreadyExitsException("Unauthorized User");
+            }
+        }else {
+            throw new UserAlreadyExitsException("User not Registered");
+        }
+        return usersDao.findByEmailId(emailId);
+    }
+
 }
