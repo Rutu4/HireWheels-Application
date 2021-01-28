@@ -26,20 +26,23 @@ public class UserServiceImpl implements  UserService{
     }
     @Override
     public Users createUser(Users user) throws UserAlreadyExitsException{
-        if (usersDao.findByEmailId(user.getEmailId()).isPresent()) {
+        if (usersDao.findByEmailId(user.getEmailId())!=null) {
             throw new UserAlreadyExitsException("Email Already Exists");
         }
-        if (usersDao.findByMobileNumber(user.getMobileNumber()).isPresent()) {
+        if (usersDao.findByMobileNumber(user.getMobileNumber())!=null) {
             throw new UserAlreadyExitsException("Mobile Number Already Exists");
         }
-        return usersDao.save(user);
+
+        Users user1=usersDao.save(user);
+        System.out.println(user1);
+        return user1;
 
     }
 
     @Override
     public Users getUser(String emailId, String password) throws UserAlreadyExitsException{
-        if(usersDao.findByEmailId(emailId).isPresent()){
-            if(usersDao.findByEmailId(emailId).getPassword()==password){
+        if(usersDao.findByEmailId(emailId)!=null){
+            if(usersDao.findByEmailId(emailId).getPassword().equals(password)){
                 return usersDao.findByEmailId(emailId);
             }else {
                 throw new UserAlreadyExitsException("Unauthorized User");
@@ -47,7 +50,7 @@ public class UserServiceImpl implements  UserService{
         }else {
             throw new UserAlreadyExitsException("User not Registered");
         }
-        return usersDao.findByEmailId(emailId);
+
     }
 
 }

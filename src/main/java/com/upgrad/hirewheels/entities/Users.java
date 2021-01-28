@@ -35,6 +35,23 @@ public class Users {
     @OneToMany (mappedBy = "user", fetch = FetchType.EAGER, cascade =  {CascadeType.ALL})
     private Set<Booking> bookings;
 
+    public Users(int userId, String firstName, String lastName, String password, String emailId,
+                 String mobileNumber, float walletMoney, Role role) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.emailId = emailId;
+        this.mobileNumber = mobileNumber;
+        this.walletMoney = walletMoney;
+        this.role=role;
+
+
+    }
+
+    public Users() {
+    }
+
     public Set<Booking> getBookings() {
         return bookings;
     }
