@@ -11,10 +11,7 @@ import com.upgrad.hirewheels.entities.VehicleSubcategory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.chrono.ChronoLocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class VehicleServiceImpl implements VehicleService{
 
@@ -32,37 +29,42 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public List<Vehicle> getAllVehicles(){
+
         return vehicleDao.findAll();
     }
 
-    public List<Vehicle> getAvailableVehicles(String category, String location, ChronoLocalDate pickupDate,
+    public Set<Vehicle> getAvailableVehicles(String category, int locationId, ChronoLocalDate pickupDate,
                                               ChronoLocalDate dropoffDate){
 
         List<Vehicle> vehicles=vehicleDao.findAll();
 
-        List<Vehicle> availableVehicles=new ArrayList<>();
+        Set<Vehicle> availableVehicles=new HashSet<>();
+        List<Vehicle> av=new ArrayList<>();
+
         for(Vehicle v: vehicles){
+
             if(v.getAvailabilityStatus()==1){
-                if(v.getVehicleSubcategory().getVehicleCategory().getVehicleCategoryName()==category){
-                    if(v.getLocation().getLocationName()==location){
-                       Set<Booking> b=v.getBookings();
-                       for(Booking booking: b){
-                           if(booking.getPickupDate().compareTo(pickupDate)<0){
-                               if(booking.getDropoffDate().compareTo(pickupDate)<0){
-                                   availableVehicles.add(v);
-                               }else if(booking.getPickupDate().compareTo(pickupDate)>0){
-                                   if(booking.getDropoffDate().compareTo(dropoffDate)>0){
-                                       availableVehicles.add(v);
-                                   }
-                               }
-                           }
-                           if(booking==null){
-                               availableVehicles.add(v);
-                           }
-                       }
-                    }
+
+                if(v.getVehicleSubcategory().getVehicleCategory().getVehicleCategoryName().equals(category)){
+                    if(v.getLocation().getLocationId()==locationId){
+                        av.add(v);
+                              }
                 }
             }
+        }
+        for(Vehicle v1:av) {
+            List<Booking> bookings = bookingDao.findByVehicle(v1);
+            for(Booking b: bookings){
+                if(b.getPickupDate().compareTo(pickupDate)<0 && b.getDropoffDate().compareTo(pickupDate)<0){
+                    availableVehicles.add(v1);
+
+
+                }
+                else if(b.getPickupDate().compareTo(pickupDate)>0 && b.getPickupDate().compareTo(dropoffDate)>0){
+                    availableVehicles.add(v1);
+                }
+            }
+
         }
 
         return availableVehicles;

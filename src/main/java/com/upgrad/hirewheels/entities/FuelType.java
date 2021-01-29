@@ -16,6 +16,15 @@ public class FuelType {
     @OneToMany (mappedBy = "fuelType", fetch = FetchType.EAGER, cascade =  {CascadeType.ALL})
     private Set<Vehicle> vehicles;
 
+    public FuelType() {
+    }
+
+    public FuelType(int fuelTypeId, String fuelType) {
+        this.fuelTypeId = fuelTypeId;
+        this.fuelType = fuelType;
+
+    }
+
     public Set<Vehicle> getVehicles() {
         return vehicles;
     }

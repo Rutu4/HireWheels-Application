@@ -24,6 +24,18 @@ public class VehicleSubcategory {
     @OneToMany (mappedBy = "vehicleSubcategory", fetch = FetchType.EAGER,cascade =  {CascadeType.ALL})
     private Set<Vehicle> vehicles;
 
+    public VehicleSubcategory() {
+    }
+
+    public VehicleSubcategory(int vehicleSubcategoryId, String vehicleSubcategoryName,
+                              float pricePerDay, VehicleCategory vehicleCategory) {
+        this.vehicleSubcategoryId = vehicleSubcategoryId;
+        this.vehicleSubcategoryName = vehicleSubcategoryName;
+        this.pricePerDay = pricePerDay;
+        this.vehicleCategory = vehicleCategory;
+
+    }
+
     public Set<Vehicle> getVehicles() {
         return vehicles;
     }

@@ -33,7 +33,20 @@ public class Booking {
     @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
+    public Booking() {
+    }
 
+    public Booking(int bookingId, LocalDate pickupDate, LocalDate dropoffDate, LocalDate bookingDate,
+                   float amount, Location location, Vehicle vehicle, Users user) {
+        this.bookingId = bookingId;
+        this.pickupDate = pickupDate;
+        this.dropoffDate = dropoffDate;
+        this.bookingDate = bookingDate;
+        this.amount = amount;
+        this.location = location;
+        this.vehicle = vehicle;
+        this.user = user;
+    }
 
     public int getBookingId() {
         return bookingId;
