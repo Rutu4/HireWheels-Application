@@ -8,6 +8,8 @@ import com.upgrad.hirewheels.entities.Booking;
 import com.upgrad.hirewheels.entities.Vehicle;
 import com.upgrad.hirewheels.entities.VehicleCategory;
 import com.upgrad.hirewheels.entities.VehicleSubcategory;
+import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
+import com.upgrad.hirewheels.exceptions.VehicleDetailsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.chrono.ChronoLocalDate;
@@ -72,5 +74,17 @@ public class VehicleServiceImpl implements VehicleService{
 
     }
 
+    @Override
+    public Vehicle addVehicle(Vehicle vehicle){
+        return vehicleDao.save(vehicle);
+    }
+
+    @Override
+    public  Vehicle getVehicleDetails(int id) throws VehicleDetailsNotFoundException {
+        return vehicleDao.findById(id)
+                .orElseThrow(
+                        () -> new VehicleDetailsNotFoundException("Vehicle not found for id: " + id)
+                );
+    }
 
 }
