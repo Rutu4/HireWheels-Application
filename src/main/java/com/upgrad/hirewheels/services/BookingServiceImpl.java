@@ -9,7 +9,7 @@ import com.upgrad.hirewheels.exceptions.BookingDetailsNotFoundException;
 import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class BookingServiceImpl {
+public class BookingServiceImpl implements BookingService{
 
     @Autowired
     BookingDao bookingDao;
@@ -22,6 +22,7 @@ public class BookingServiceImpl {
 
 
 
+    @Override
     public Booking getBookingDetails(int id) throws BookingDetailsNotFoundException {
         return bookingDao.findById(id)
                 .orElseThrow(
@@ -30,6 +31,7 @@ public class BookingServiceImpl {
     }
 
 
+    @Override
     public Booking addBooking(Booking booking)throws Exception, BookingDetailsNotFoundException, UserDetailsNotFoundException {
         Users user=userService.getUserDetails((booking.getUser().getUserId()));
 
