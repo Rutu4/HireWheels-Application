@@ -11,10 +11,12 @@ import com.upgrad.hirewheels.entities.VehicleSubcategory;
 import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
 import com.upgrad.hirewheels.exceptions.VehicleDetailsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
+@Service
 public class VehicleServiceImpl implements VehicleService{
 
     @Autowired

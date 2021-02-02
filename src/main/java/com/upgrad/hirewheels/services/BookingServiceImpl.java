@@ -8,7 +8,9 @@ import com.upgrad.hirewheels.entities.Vehicle;
 import com.upgrad.hirewheels.exceptions.BookingDetailsNotFoundException;
 import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookingServiceImpl implements BookingService{
 
     @Autowired
