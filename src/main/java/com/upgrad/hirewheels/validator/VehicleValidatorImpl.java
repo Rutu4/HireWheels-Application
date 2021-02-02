@@ -26,34 +26,38 @@ public class VehicleValidatorImpl {
     public void validateVehicle(VehicleDto vehicleDto) throws APIException, FuelTypeDetailsNotFoundException, LocationDetailsNotFoundException, VehicleSubcategoryDetailsNotFoundException {
 
        if(vehicleDto.getVehicleImageUrl()==null || vehicleDto.getVehicleImageUrl().length()<=0){
-           throw  new APIException("Invalid image url");
+           throw  new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getAvailabilityStatus()!=0 || vehicleDto.getAvailabilityStatus()!=1){
-           throw new APIException("Invalid available status");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getColor()==null || vehicleDto.getColor().length()<=0){
-           throw new APIException("Invalid color");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getVehicleModel()==null || vehicleDto.getVehicleModel().length()<=0){
-           throw new APIException("Invalid vehicle model");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getVehicleNumber()==null || vehicleDto.getVehicleNumber().length()<=0){
-           throw new APIException("invalid vehicle number");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getFuelTypeId()<=0){
-           throw new APIException("Invalid fuelType id");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getLocationId()<=0){
-           throw new APIException("Invalid location id");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(vehicleDto.getVehicleSubcategoryId()<=0){
-           throw new APIException("Invalid vehicle subcategory id");
+           throw new APIException("Fields shouldn’t be null or empty");
        }
        if(fuelTypeService.getFuelTypeDetails(vehicleDto.getLocationId()).getFuelType()==null)
-           throw new APIException("Invalid fuel type name");
+           throw new APIException("Fields shouldn’t be null or empty");
+       if(locationService.getLocationDetails(vehicleDto.getLocationId())==null)
+           throw new APIException("Invalid Location Id for vehicle");
        if(locationService.getLocationDetails(vehicleDto.getLocationId()).getLocationName()==null)
-           throw new APIException("Invalid Location name");
+           throw new APIException("Fields shouldn’t be null or empty");
        if(vehicleSubcategoryService.getVehicleSubcategoryDetails(vehicleDto.getVehicleSubcategoryId()).getVehicleSubcategoryName()==null)
-            throw new APIException("Invalid Vehicle Subvategory Name");
+            throw new APIException("Fields shouldn’t be null or empty");
+
+
     }
 }

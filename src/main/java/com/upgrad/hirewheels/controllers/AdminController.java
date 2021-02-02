@@ -32,13 +32,14 @@ public class AdminController {
 
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-    @PostMapping(value="/vehicles",consumes= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/vehicles",consumes= MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity newVehicle(@RequestBody VehicleDto vehicleDto) {
         Vehicle newVehicle = modelmapper.map(vehicleDto, Vehicle.class);
         Vehicle savedVehicle = vehicleService.addVehicle(newVehicle);
         VehicleDto savedVehicleDto = modelmapper.map(savedVehicle, VehicleDto.class);
-        logger.debug("Accepted new vehicle details",savedVehicle);
-        return new ResponseEntity<>(savedVehicleDto, HttpStatus.CREATED);
+        logger.debug("Vehicle Added Successfully",savedVehicle);
+        CustomResponses response= new CustomResponses("Vehicle Added Successfully",HttpStatus.CREATED.value());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     @PutMapping(value ="/vehicles/{id}",consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity changeVehicleAvailability(@PathVariable ("id") int id,
@@ -54,6 +55,7 @@ public class AdminController {
         vehicle.setAvailabilityStatus(statusDto.getAvailabilityStatus());
         vehicleService.addVehicle(vehicle);
         logger.debug("Update vehicle availability details : vehicle id :" + id, vehicle);
-        return new ResponseEntity<>("saved",HttpStatus.OK);
+        CustomResponses response = new CustomResponses("Activity Performed Successfully", HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     }
