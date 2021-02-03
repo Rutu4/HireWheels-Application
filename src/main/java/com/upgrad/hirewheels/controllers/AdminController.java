@@ -3,8 +3,10 @@ package com.upgrad.hirewheels.controllers;
 import com.upgrad.hirewheels.dto.StatusDto;
 import com.upgrad.hirewheels.dto.VehicleDto;
 import com.upgrad.hirewheels.entities.Vehicle;
+import com.upgrad.hirewheels.exceptions.APIException;
 import com.upgrad.hirewheels.exceptions.VehicleDetailsNotFoundException;
 import com.upgrad.hirewheels.responses.CustomResponses;
+import com.upgrad.hirewheels.services.UserService;
 import com.upgrad.hirewheels.services.VehicleServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +31,17 @@ public class AdminController {
     ModelMapper modelmapper;
 
 
+    @Autowired
+    UserService userService;
 
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @PostMapping(value="/vehicles",consumes= MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity newVehicle(@RequestBody VehicleDto vehicleDto) {
+    public ResponseEntity newVehicle(@RequestBody VehicleDto vehicleDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws APIException {
+        if(token == null)
+            throw new APIException("Please add proper authentication");
+        if(!userService.getUserByEmailId(token).getRole().getRoleName().equalsIgnoreCase("Admin"))
+            throw new APIException("This feature is only available to admin");
         Vehicle newVehicle = modelmapper.map(vehicleDto, Vehicle.class);
         Vehicle savedVehicle = vehicleService.addVehicle(newVehicle);
         VehicleDto savedVehicleDto = modelmapper.map(savedVehicle, VehicleDto.class);
@@ -43,7 +51,13 @@ public class AdminController {
     }
     @PutMapping(value ="/vehicles/{id}",consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity changeVehicleAvailability(@PathVariable ("id") int id,
-                                                              @RequestBody StatusDto statusDto) throws VehicleDetailsNotFoundException {
+                                                              @RequestBody StatusDto statusDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws VehicleDetailsNotFoundException, APIException {
+        if(token == null)
+            throw new APIException("Please add proper authentication");
+        if(!userService.getUserByEmailId(token).getRole().getRoleName().equalsIgnoreCase("Admin"))
+            throw new APIException("This feature is only available to admin");
+
+
         if(statusDto.getAvailabilityStatus()!=0 ){
             if(statusDto.getAvailabilityStatus()!=1) {
                 CustomResponses response = new CustomResponses("Invalid status value", HttpStatus.BAD_REQUEST.value());

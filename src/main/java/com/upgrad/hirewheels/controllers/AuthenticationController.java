@@ -17,7 +17,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping(value="/hirewheels/v1")
 public class AuthenticationController {
 
     @Autowired
@@ -52,9 +59,13 @@ public class AuthenticationController {
             throws APIException, UserAlreadyExitsException {
 
         userValidator.validateLogin(loginDTO);
+        String userName=loginDTO.getEmailId();
         Users user=userService.getUser(loginDTO.getEmailId(),loginDTO.getPassword());
         UserDto userDto= modelMapper.map(user,UserDto.class);
-        return new ResponseEntity<>(userDto,HttpStatus.OK);
+        Map<String, String> model = new HashMap<>();
+        model.put("message","Logged in Successfully");
+        model.put("token",userName);
+        return new ResponseEntity<>(model,HttpStatus.OK);
 
     }
 }
