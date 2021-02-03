@@ -3,7 +3,9 @@ package com.upgrad.hirewheels;
 import com.upgrad.hirewheels.dao.*;
 import com.upgrad.hirewheels.entities.*;
 import com.upgrad.hirewheels.services.initService;
+import com.upgrad.hirewheels.services.initServiceImpl;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,10 +19,15 @@ public class HireWheelsApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext context = SpringApplication.run(HireWheelsApplication.class, args);
-		//initService initService= context.getBean(initService.class);
-        //initService.start();
 
 
+
+	}
+
+	public void initservice(){
+
+		initService initService=new initServiceImpl();
+		initService.start();
 
 	}
 	@Bean

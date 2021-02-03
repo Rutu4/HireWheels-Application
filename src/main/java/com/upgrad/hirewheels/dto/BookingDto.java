@@ -1,27 +1,20 @@
 package com.upgrad.hirewheels.dto;
 
-import com.upgrad.hirewheels.entities.Location;
-import com.upgrad.hirewheels.entities.Users;
-import com.upgrad.hirewheels.entities.Vehicle;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.time.LocalDate;
 
 public class BookingDto {
     private int bookingId;
 
-    private LocalDate pickupDate;
+    private String pickupDate;
 
-    private LocalDate dropoffDate;
+    private String dropoffDate;
 
-    private LocalDate bookingDate;
+    private String bookingDate;
 
     private float amount;
 
 
-    private Location location;
+    private int location;
 
 
     private int vehicle;
@@ -36,27 +29,27 @@ public class BookingDto {
         this.bookingId = bookingId;
     }
 
-    public LocalDate getPickupDate() {
+    public String getPickupDate() {
         return pickupDate;
     }
 
-    public void setPickupDate(LocalDate pickupDate) {
+    public void setPickupDate(String pickupDate) {
         this.pickupDate = pickupDate;
     }
 
-    public LocalDate getDropoffDate() {
+    public String getDropoffDate() {
         return dropoffDate;
     }
 
-    public void setDropoffDate(LocalDate dropoffDate) {
+    public void setDropoffDate(String dropoffDate) {
         this.dropoffDate = dropoffDate;
     }
 
-    public LocalDate getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDate bookingDate) {
+    public void setBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 
@@ -68,11 +61,11 @@ public class BookingDto {
         this.amount = amount;
     }
 
-    public Location getLocation() {
+    public int getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(int location) {
         this.location = location;
     }
 
@@ -85,7 +78,7 @@ public class BookingDto {
     }
 
     public int getUser() {
-        return user;
+        return this.user;
     }
 
     public void setUser(int user) {

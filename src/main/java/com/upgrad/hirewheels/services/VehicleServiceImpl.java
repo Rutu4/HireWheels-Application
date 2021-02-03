@@ -71,6 +71,9 @@ public class VehicleServiceImpl implements VehicleService{
 
         }
 
+        for(Vehicle vehicle: av){
+            availableVehicles.add(vehicle);
+        }
         return availableVehicles;
 
 

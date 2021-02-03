@@ -21,11 +21,12 @@ public class UserServiceImpl implements  UserService{
     public Users getUserDetails(int id) throws UserDetailsNotFoundException {
         return usersDao.findById(id)
                 .orElseThrow(
-                        () -> new UserDetailsNotFoundException("Booking not found for id: " + id)
+                        () -> new UserDetailsNotFoundException("User not found for id: " + id)
                 );
     }
     @Override
     public Users createUser(Users user) throws UserAlreadyExitsException{
+        System.out.println(user);
         if (usersDao.findByEmailId(user.getEmailId())!=null) {
             throw new UserAlreadyExitsException("Email Already Exists");
         }
@@ -33,9 +34,9 @@ public class UserServiceImpl implements  UserService{
             throw new UserAlreadyExitsException("Mobile Number Already Exists");
         }
 
-        Users user1=usersDao.save(user);
-        System.out.println(user1);
-        return user1;
+        System.out.println(user);
+        return usersDao.save(user);
+
 
     }
 

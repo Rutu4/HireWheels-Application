@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping(value="/hirewheels/v1/vehicles")
+@RequestMapping(value="/hirewheels/v1")
 public class VehicleController {
 
         @Autowired
@@ -34,7 +34,7 @@ public class VehicleController {
         @Autowired
         ModelMapper modelmapper;
 
-        @GetMapping(value = "/data",produces= MediaType.APPLICATION_JSON_VALUE)
+        @GetMapping(value = "/getV",produces= MediaType.APPLICATION_JSON_VALUE)
         public ResponseEntity getVehicles(@RequestParam("categoryName") String categoryName,
                                           @RequestParam("pickupDate") String pickupDate,
                                           @RequestParam("dropoffDate") String dropoffDate,
