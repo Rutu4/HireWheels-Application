@@ -10,7 +10,9 @@ import com.upgrad.hirewheels.services.LocationServiceImpl;
 import com.upgrad.hirewheels.services.VehicleSubcategoryService;
 import com.upgrad.hirewheels.services.VehicleSubcategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VehicleValidatorImpl {
 
     @Autowired

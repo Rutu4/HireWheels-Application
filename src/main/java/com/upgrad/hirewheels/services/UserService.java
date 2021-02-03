@@ -8,4 +8,6 @@ public interface UserService {
     Users createUser(Users users) throws UserAlreadyExitsException;
     public Users getUserDetails(int id) throws UserDetailsNotFoundException;
     public Users getUser(String emailId, String password) throws UserAlreadyExitsException;
+    public Users getUserByEmailId(String emailId);
+    public Users getUserByMobileNumber(String mobileNumber);
     }
