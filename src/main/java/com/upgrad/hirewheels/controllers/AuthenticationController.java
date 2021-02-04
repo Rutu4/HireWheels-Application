@@ -7,6 +7,7 @@ import com.upgrad.hirewheels.dto.UserLoginDto;
 import com.upgrad.hirewheels.entities.Users;
 import com.upgrad.hirewheels.exceptions.APIException;
 import com.upgrad.hirewheels.exceptions.UserAlreadyExitsException;
+import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
 import com.upgrad.hirewheels.responses.CustomResponses;
 import com.upgrad.hirewheels.services.UserService;
 import com.upgrad.hirewheels.validator.UserValidator;
@@ -40,7 +41,7 @@ public class AuthenticationController {
     ModelMapper modelMapper;
 
     @PostMapping(value = "/signup",consumes= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity signUp(@RequestBody SignUpDto userDto) throws APIException, UserAlreadyExitsException {
+    public ResponseEntity signUp(@RequestBody SignUpDto userDto) throws APIException, UserAlreadyExitsException, UserDetailsNotFoundException {
          userValidator.validateUser(userDto);
          if(userService.getUserByEmailId(userDto.getEmailId())!=null ||
                  userService.getUserByMobileNumber(userDto.getMobileNumber())!=null){

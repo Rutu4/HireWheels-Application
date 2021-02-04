@@ -22,7 +22,7 @@ public class UserDto {
 
     private float walletMoney;
 
-    private int role;
+    private int roleId;
 
     public int getUserId() {
         return userId;
@@ -80,11 +80,11 @@ public class UserDto {
         this.walletMoney = walletMoney;
     }
 
-    public int getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 }

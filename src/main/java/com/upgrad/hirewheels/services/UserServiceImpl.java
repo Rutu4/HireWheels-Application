@@ -55,8 +55,13 @@ public class UserServiceImpl implements  UserService{
     }
 
     @Override
-    public Users getUserByEmailId(String emailId ){
-        return usersDao.findByEmailId(emailId);
+    public Users getUserByEmailId(String emailId ) throws UserDetailsNotFoundException {
+
+        Users user= usersDao.findByEmailId(emailId);
+        if(user==null)
+            throw new UserDetailsNotFoundException("Invalid Token?EmailId");
+        return user;
+
     }
 
     @Override

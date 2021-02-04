@@ -4,5 +4,5 @@ import com.upgrad.hirewheels.entities.FuelType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FuelTypeDao extends JpaRepository<FuelType, Integer> {
-    FuelType findById(int id);
+    //FuelType findById(int id);
 }

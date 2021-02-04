@@ -14,12 +14,12 @@ public class BookingDto {
     private float amount;
 
 
-    private int location;
+    private int locationId;
 
 
-    private int vehicle;
+    private int vehicleId;
 
-    private int user;
+    private int userId;
 
     public int getBookingId() {
         return bookingId;
@@ -62,26 +62,26 @@ public class BookingDto {
     }
 
     public int getLocation() {
-        return location;
+        return locationId;
     }
 
     public void setLocation(int location) {
-        this.location = location;
+        this.locationId = location;
     }
 
     public int getVehicle() {
-        return vehicle;
+        return vehicleId;
     }
 
     public void setVehicle(int vehicle) {
-        this.vehicle = vehicle;
+        this.vehicleId = vehicle;
     }
 
     public int getUser() {
-        return this.user;
+        return this.userId;
     }
 
     public void setUser(int user) {
-        this.user = user;
+        this.userId = user;
     }
 }

@@ -4,5 +4,5 @@ import com.upgrad.hirewheels.entities.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LocationDao extends JpaRepository<Location, Integer> {
-    Location findById(int id);
+    //Location findById(int id);
 }

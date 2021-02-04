@@ -4,6 +4,7 @@ import com.upgrad.hirewheels.dto.StatusDto;
 import com.upgrad.hirewheels.dto.VehicleDto;
 import com.upgrad.hirewheels.entities.Vehicle;
 import com.upgrad.hirewheels.exceptions.APIException;
+import com.upgrad.hirewheels.exceptions.UserDetailsNotFoundException;
 import com.upgrad.hirewheels.exceptions.VehicleDetailsNotFoundException;
 import com.upgrad.hirewheels.responses.CustomResponses;
 import com.upgrad.hirewheels.services.UserService;
@@ -37,7 +38,7 @@ public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @PostMapping(value="/vehicles",consumes= MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity newVehicle(@RequestBody VehicleDto vehicleDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws APIException {
+    public ResponseEntity newVehicle(@RequestBody VehicleDto vehicleDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws APIException, UserDetailsNotFoundException {
         if(token == null)
             throw new APIException("Please add proper authentication");
         if(!userService.getUserByEmailId(token).getRole().getRoleName().equalsIgnoreCase("Admin"))
@@ -51,7 +52,7 @@ public class AdminController {
     }
     @PutMapping(value ="/vehicles/{id}",consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity changeVehicleAvailability(@PathVariable ("id") int id,
-                                                              @RequestBody StatusDto statusDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws VehicleDetailsNotFoundException, APIException {
+                                                              @RequestBody StatusDto statusDto,@RequestHeader(value = "ACCESS-TOKEN") String token) throws VehicleDetailsNotFoundException, APIException, UserDetailsNotFoundException {
         if(token == null)
             throw new APIException("Please add proper authentication");
         if(!userService.getUserByEmailId(token).getRole().getRoleName().equalsIgnoreCase("Admin"))

@@ -104,7 +104,7 @@ public class initServiceImpl implements initService {
 
 
         VehicleSubcategory vs1=new VehicleSubcategory();
-        vs1.setVehicleCategory(vehicleCategoryDao.findById(4));
+        vs1.setVehicleCategory(vehicleCategoryDao.findById(4).get());
         vs1.setVehicleSubcategoryId(111);
         vs1.setVehicleSubcategoryName("SUV");
         vs1.setPricePerDay(300);
@@ -112,7 +112,7 @@ public class initServiceImpl implements initService {
         vehicleSubCategoryDao.save(vs1);
 
         VehicleSubcategory vs2=new VehicleSubcategory();
-        vs2.setVehicleCategory(vehicleCategoryDao.findById(4));
+        vs2.setVehicleCategory(vehicleCategoryDao.findById(4).get());
         vs2.setVehicleSubcategoryId(112);
         vs2.setVehicleSubcategoryName("SEDAN");
         vs2.setPricePerDay(350);
@@ -120,7 +120,7 @@ public class initServiceImpl implements initService {
         vehicleSubCategoryDao.save(vs2);
 
         VehicleSubcategory vs3=new VehicleSubcategory();
-        vs3.setVehicleCategory(vehicleCategoryDao.findById(4));
+        vs3.setVehicleCategory(vehicleCategoryDao.findById(4).get());
         vs3.setVehicleSubcategoryId(113);
         vs3.setVehicleSubcategoryName("HATCHBACK");
         vs3.setPricePerDay(250);
@@ -128,7 +128,7 @@ public class initServiceImpl implements initService {
         vehicleSubCategoryDao.save(vs3);
 
         VehicleSubcategory vs4=new VehicleSubcategory();
-        vs4.setVehicleCategory(vehicleCategoryDao.findById(5));
+        vs4.setVehicleCategory(vehicleCategoryDao.findById(5).get());
         vs4.setVehicleSubcategoryId(114);
         vs4.setVehicleSubcategoryName("CRUISER");
         vs4.setPricePerDay(200);
@@ -136,7 +136,7 @@ public class initServiceImpl implements initService {
         vehicleSubCategoryDao.save(vs4);
 
         VehicleSubcategory vs5=new VehicleSubcategory();
-        vs5.setVehicleCategory(vehicleCategoryDao.findById(5));
+        vs5.setVehicleCategory(vehicleCategoryDao.findById(5).get());
         vs5.setVehicleSubcategoryId(115);
         vs5.setVehicleSubcategoryName("DIRT BIKE");
         vs5.setPricePerDay(200);
@@ -144,7 +144,7 @@ public class initServiceImpl implements initService {
         vehicleSubCategoryDao.save(vs5);
 
         VehicleSubcategory vs6=new VehicleSubcategory();
-        vs6.setVehicleCategory(vehicleCategoryDao.findById(5));
+        vs6.setVehicleCategory(vehicleCategoryDao.findById(5).get());
         vs6.setVehicleSubcategoryId(116);
         vs6.setVehicleSubcategoryName("SPORTS BIKE");
         vs6.setPricePerDay(150);
