@@ -13,4 +13,5 @@ public interface UsersDao extends JpaRepository<Users, Integer> {
     public Users findByMobileNumber(String mobileNumber);
 
     public Users findByEmailId(String emailId);
+    Users findById(int id);
 }

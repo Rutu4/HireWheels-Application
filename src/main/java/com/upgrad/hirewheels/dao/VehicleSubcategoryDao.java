@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface VehicleSubcategoryDao extends JpaRepository<VehicleSubcategory, Integer> {
 
-
+    VehicleSubcategory findById(int id);
     List<VehicleSubcategory> findByVehicleCategory(VehicleCategory vehicleCategory);
 }

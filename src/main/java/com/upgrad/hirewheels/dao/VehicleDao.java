@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface VehicleDao extends JpaRepository<Vehicle, Integer> {
-
+     Vehicle findById(int id);
      List<Vehicle> findAll();
      List<Vehicle> findByVehicleSubcategory(VehicleSubcategory vehicleSubcategory);
 }

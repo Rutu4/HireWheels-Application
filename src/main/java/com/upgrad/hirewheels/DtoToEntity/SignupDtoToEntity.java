@@ -12,6 +12,7 @@ public class SignupDtoToEntity {
 
     @Autowired
     RoleService roleService;
+
     public Users convertor(SignUpDto signUpDto){
         Users user=new Users();
         user.setFirstName(signUpDto.getFirstName());
